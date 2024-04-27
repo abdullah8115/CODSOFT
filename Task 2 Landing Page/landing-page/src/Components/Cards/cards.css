@@ -1,0 +1,62 @@
+.card-section {
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 0;
+  }
+  
+  .title {
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2rem;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    gap: 1rem;
+  }
+  
+  .card {
+    flex: 1 1 45%; /* Allow cards to grow and shrink but base around 45% of container width */
+    max-width: 40%; /* Maximum width set to the same to prevent growing over 45% */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card {
+      flex: 1 1 100%; /* Each card takes full width on smaller screens */
+      max-width: 100%;
+    }
+  }
+  

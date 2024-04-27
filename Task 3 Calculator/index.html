@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="icon" href="./tab icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc9c9;
+            border-radius: 4px;
+            width: 80%;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 18px;
+        }
+
+        button.reset {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="calculatorform">
+        <input type="number" name="num1" id="num1" placeholder="First Number" required>
+        <input type="number" name="num2" id="num2" placeholder="Second Number" required>
+        <br>
+        <button type="button" onclick="performOperation('+')">Addition (+)</button>
+        <button type="button" onclick="performOperation('-')">Subtraction (-)</button>
+        <button type="button" onclick="performOperation('*')">Multiplication (*)</button>
+        <button type="button" onclick="performOperation('/')">Division (/)</button>
+        <br>
+        <button type="button" class="reset" onclick="resetCalc()">Reset</button>
+        <br>
+        <input type="text" id="result" readonly>
+    </form>
+    <script>
+        function performOperation(operator) {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid numbers");
+                return;
+            }
+            let result;
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        alert("Cannot divide by zero");
+                        return;
+                    }
+                    break;
+                default:
+                    alert("Invalid operator");
+                    return;
+            }
+            document.getElementById("result").value = result.toFixed(2);
+        }
+
+        function resetCalc() {
+            document.getElementById("calculatorform").reset();
+            document.getElementById("result").value = "";
+        }
+    </script>
+</body>
+
+</html>
